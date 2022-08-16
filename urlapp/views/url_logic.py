@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from urlapp.forms.url_logic import LinksCreateForm
 from urlapp.models import Link
 
-class HomeView(View):
+class HomeView(LoginRequiredMixin, View):
 
     template_name = 'pages/home.html'
     form_class = LinksCreateForm
@@ -20,7 +21,7 @@ class HomeView(View):
             return redirect('home')
         return render(request, self.template_name, context={'form': form})
 
-class MyLinksView(View):
+class MyLinksView(LoginRequiredMixin, View):
     template_name = 'pages/mylinks.html'
 
     def get(self, request):
@@ -31,7 +32,7 @@ class MyLinksView(View):
             {"links": my_links}
             )
 
-class SeeMyLinksView(View):
+class SeeMyLinksView(LoginRequiredMixin, View):
     template_name = 'pages/detail_links.html'
 
     def get(self, request, pk):
