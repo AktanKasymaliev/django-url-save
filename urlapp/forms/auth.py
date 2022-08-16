@@ -23,7 +23,7 @@ class SignUpForm(forms.ModelForm):
 
     def clean(self):
         if not self.cleaned_data['password'] == self.cleaned_data['password2'] or not self.cleaned_data['password2']:
-            self._errors['password2'] = self.error_class(['Пароли не совпадают'])
+            self._errors['password2'] = self.error_class(['Password doesn\'t match'])
         return self.cleaned_data
 
     def save(self, commit=True):

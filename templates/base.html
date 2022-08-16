@@ -20,7 +20,7 @@
             URL Saver
         </a>
     {% if user.is_authenticated %}
-        <a href="#" style="text-decoration: none; font-size: 18px;">{{ request.user }}</a>
+        <a href="{% url 'mylinks' %}" style="text-decoration: none; font-size: 18px;">MY LINKS</a>
             <a href="{% url 'logout' %}" style="text-decoration: none; margin-right: 50px; color: brown;">
                     Log Out
             </a>
