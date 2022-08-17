@@ -25,3 +25,5 @@ def config() -> None:
     #SYSTEM
     os.environ.setdefault("DJANGO_DEBUG", get_config(config_parse, SYSTEM, "DJANGO_DEBUG", "False"))
     os.environ.setdefault("DJANGO_KEY", get_config(config_parse, SYSTEM, "DJANGO_KEY", "super_secret_key"))
+    os.environ.setdefault("ADMIN_USERNAME", get_config(config_parse, SYSTEM, "ADMIN_USERNAME", "admin"))
+    os.environ.setdefault("ADMIN_PASSWORD", get_config(config_parse, SYSTEM, "ADMIN_PASSWORD", "admin"))
