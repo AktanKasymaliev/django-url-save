@@ -9,6 +9,8 @@ class BaseTestCase(TestCase):
 
     def setUp(self) -> None:
         self.register_url = reverse('signup')
+        self.login_url = reverse('login')
+
         self.user = {
             "email": "test1@gmail.com", 
             "username": "test1",
@@ -23,6 +25,14 @@ class BaseTestCase(TestCase):
             "password2": "passw"}
 
 class RegisterTestCase(BaseTestCase):
+
+    def test_login_html_rendered(self):
+        response = self.client.get(self.login_url)
+        self.assertTemplateUsed(response, "auth/login.html")
+
+    def test_signup_html_rendered(self):
+        response = self.client.get(self.register_url)
+        self.assertTemplateUsed(response, "auth/signup.html")
 
     def test_can_register_user(self):
         response = self.client.post(self.register_url, data=self.user)

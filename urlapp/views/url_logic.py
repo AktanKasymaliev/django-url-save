@@ -19,7 +19,11 @@ class HomeView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             return redirect('home')
-        return render(request, self.template_name, context={'form': form})
+        return render(
+            request, 
+            self.template_name, 
+            context={'form': form}, 
+            status=403)
 
 class MyLinksView(LoginRequiredMixin, View):
     template_name = 'pages/mylinks.html'
