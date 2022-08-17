@@ -35,3 +35,10 @@ CREATE DATABASE <database name> owner <user>;
 ```
 
 * And finally start project: `python manage.py runserver`
+
+### Bring up the project with Docker:
+* Create a file settings.ini on self project level, copy text from settings.ini_template, and add your value: 
+
+( Don't forget that database's host it is docker's database service name )
+
+* And finally start project: `docker-compose up --build`
